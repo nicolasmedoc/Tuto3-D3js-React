@@ -2,18 +2,22 @@ function generateValue(typeGen,i){
     let effectiveValue=null;
     if (typeGen==="random"){
         effectiveValue=Math.random();
+    }else if (typeGen==="random-int"){
+        effectiveValue=Math.floor(Math.random()*100000);
     }else if(typeGen==="increment"){
         effectiveValue=i;
     }
     return effectiveValue;
 }
-export function genGridData(nbRows, nbColumns, typeGen="random", typeGen2="random"){
+export function genGridData(nbRows, nbColumns, typeGen="random-int", typeGen2="random"){
     const valuesArr = []
     for(let i=0;i<nbRows*nbColumns;i++){
-        let effectiveValue=generateValue(typeGen,i);
-        let effectiveValue2 = generateValue(typeGen2,i);
+        let nbProductSold=generateValue(typeGen,i);
+        let salesGrowth = generateValue(typeGen2,i);
+        let rowPos = Math.floor(i/nbColumns);
+        let colPos = i%nbColumns;
 
-        const cellObj = {index:i, rowPos:Math.floor(i/nbColumns), colPos:i%nbColumns, value:effectiveValue, value2:effectiveValue2}
+        const cellObj = {index:i, rowPos, colPos, nbProductSold, salesGrowth, colLabel: "Company "+rowPos, rowLabel:"Country "+colPos}
         valuesArr.push(cellObj)
     }
     return valuesArr;
