@@ -17,7 +17,7 @@ export function genGridData(nbRows, nbColumns, typeGen="random-int", typeGen2="r
         let rowPos = Math.floor(i/nbColumns);
         let colPos = i%nbColumns;
 
-        const cellObj = {index:i, rowPos, colPos, nbProductSold, salesGrowth, colLabel: "Company "+rowPos, rowLabel:"Country "+colPos}
+        const cellObj = {index:i, rowPos, colPos, nbProductSold, salesGrowth, rowLabel: "Company "+rowPos, colLabel:"Country "+colPos}
         valuesArr.push(cellObj)
     }
     return valuesArr;
