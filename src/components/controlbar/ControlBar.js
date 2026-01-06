@@ -1,7 +1,7 @@
 import "./ControlBar.css"
 
 
-function ControlBar({genConfigData, onSubmitGenAction}){
+function ControlBar(){
 
     const handleOnSubmit = function(event){
         // Prevent the browser from reloading the page
